@@ -16,8 +16,7 @@ Does not support recursion yet..
 
 ## TODO ##
 
+* Remove method parameter for the analysis -- it is superfluous. A target can uniquely be identified in terms of class and source line.
 * Put examples in separate source folder
 * fix recursion
 * make analysis builder that allows to use the points-to analysis instead of the current CHA analysis for building the call graph
-
-
