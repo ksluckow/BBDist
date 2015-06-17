@@ -41,9 +41,24 @@ public class AnalysisCache {
     Body bd = bg.getBody();
     for(Unit u : bd.getUnits()) {
       if(sourceline == u.getJavaSourceStartLineNumber()) {
-        b = getBlock(u, bg);
+        b = getBlock(bg, u);
         srcLine2block.put(sourceline, b);
         return b;
+      }
+    }
+    return null;
+  }
+  
+  public Block getBlock(BlockGraph blockGraph, Unit unit) {
+    Block bl = this.unit2block.get(unit);
+    if(bl != null)
+      return bl;
+    for(Block b : blockGraph) {
+      for(Unit u : b) {
+        if(u.equals(unit)) {
+          unit2block.put(unit, bl);
+          return b;
+        }
       }
     }
     return null;
@@ -63,7 +78,7 @@ public class AnalysisCache {
     Unit callSiteUnit = inEdge.srcUnit();
     SootMethod srcMethod = inEdge.src();
     BlockGraph blockGraph = getBlockGraph(srcMethod);
-    return getBlock(callSiteUnit, blockGraph);
+    return getBlock(blockGraph, callSiteUnit);
   }
   
   public void addCallSite(Block callSiteBlock, SootMethod method) {
@@ -72,21 +87,5 @@ public class AnalysisCache {
   
   public SootMethod getCallSiteMethod(Block callSiteBlock) {
     return callsite2Method.get(callSiteBlock);
-  }
-  
-  
-  public Block getBlock(Unit unit, BlockGraph blockGraph) {
-    Block bl = this.unit2block.get(unit);
-    if(bl != null)
-      return bl;
-    for(Block b : blockGraph) {
-      for(Unit u : b) {
-        if(u.equals(unit)) {
-          unit2block.put(unit, bl);
-          return b;
-        }
-      }
-    }
-    return null;
   }
 }

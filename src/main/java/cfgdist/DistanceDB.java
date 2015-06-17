@@ -32,6 +32,6 @@ public class DistanceDB {
     
     if(bl2dist.containsKey(tgtBlock))
       return bl2dist.get(tgtBlock);
-    return -1;
+    return Integer.MAX_VALUE;
   }
 }

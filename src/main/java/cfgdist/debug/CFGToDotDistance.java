@@ -17,7 +17,7 @@
  * Boston, MA 02111-1307, USA.
  */
 
-package cfgdist;
+package cfgdist.debug;
 
 import java.util.*;
 

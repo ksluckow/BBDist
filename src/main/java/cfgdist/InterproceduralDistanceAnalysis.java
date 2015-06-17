@@ -25,18 +25,9 @@ import soot.toolkits.graph.ExceptionalBlockGraph;
 import soot.util.dot.DotGraph;
 import cfgdist.cg.CGConstructor;
 import cfgdist.cg.CHACGGenerator;
+import cfgdist.debug.CFGToDotDistance;
 
 public class InterproceduralDistanceAnalysis {
-
-  public static void main(String[] args) {
-    InterproceduralDistanceAnalysis dist = new InterproceduralDistanceAnalysis("./build/classes/main", "examples.SimpleSys");
-    DistanceDB distanceMap = dist.computeDistance("examples.SimpleSys", "calc", 58, true);
-    int d = distanceMap.getDistance("examples.SimpleSys", "compAB", 22);
-    System.out.println("DISTANCE: " + d);
-  }
-  
-  //We can use this as a cache if we compute distance summary for multiple targets
-  
   private final String classpath;
   private final String entryClass;
   private AnalysisCache cache;
