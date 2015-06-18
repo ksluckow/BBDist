@@ -142,11 +142,7 @@ public class InterproceduralDistanceAnalysis {
       BlockGraph callsiteBlockGraph = cache.getBlockGraph(meth);
       
       DotGraph dotG = cfgDot.drawCFG(callsiteBlockGraph, null, bl2dist);
-      dotG.plot("./cfg" + meth.getName() + "_" + id++ + ".dot"); 
-    }
-    for(Block b : bl2dist.keySet()) {
-      System.out.println(b.getHead() + " dist: " + bl2dist.get(b));
+      dotG.plot("./cfg_" + meth.getName() + "_" + id++ + ".dot"); 
     }
   }
-
 }

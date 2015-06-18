@@ -494,7 +494,7 @@ public class CFGToDotDistance {
    nodesIt.hasNext(); ) {
       N node = nodesIt.next();
       
-      int count = -1;
+      int count = Integer.MAX_VALUE;
       if(blockCounts.containsKey(node))
         count = blockCounts.get(node);
       

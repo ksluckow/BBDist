@@ -38,12 +38,13 @@ public class AnalysisCache {
     Block b = srcLine2block.get(sourceline);
     if(b != null)
       return b;
-    Body bd = bg.getBody();
-    for(Unit u : bd.getUnits()) {
-      if(sourceline == u.getJavaSourceStartLineNumber()) {
-        b = getBlock(bg, u);
-        srcLine2block.put(sourceline, b);
-        return b;
+    for(Block block : bg.getBlocks()) {
+      Unit uh = block.getHead();
+      Unit ut = block.getTail();
+      if(sourceline >= uh.getJavaSourceStartLineNumber() &&
+          sourceline <= ut.getJavaSourceStartLineNumber()) {
+        srcLine2block.put(sourceline, block);
+        return block;
       }
     }
     return null;
