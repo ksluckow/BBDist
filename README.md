@@ -1,4 +1,4 @@
-# CFGDistance #
+# Interprocedural Branch Distance Analysis #
 Computes distance in terms of minimum number of branches to a target from an interprocedural analysis
 
 ## Installation ##
