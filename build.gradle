@@ -6,7 +6,7 @@ targetCompatibility = 1.8
 version = '1.0'
 jar {
     manifest {
-        attributes 'Implementation-Title': 'Gradle Quickstart',
+        attributes 'Implementation-Title': 'CFG Distance Analysis',
                    'Implementation-Version': version
     }
 }
@@ -14,7 +14,7 @@ jar {
 //create a single Jar with all dependencies
 task fatJar(type: Jar) {
 	manifest {
-        attributes 'Implementation-Title': 'Distance Analysis',  
+        attributes 'Implementation-Title': 'CFG Distance Analysis',  
         	'Implementation-Version': version
     }
     baseName = project.name + '-all'
