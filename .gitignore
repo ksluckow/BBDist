@@ -1,0 +1,8 @@
+/bin/
+/build/
+*.dot
+*.pdf
+.classpath
+.project
+.gradle
+.settings
