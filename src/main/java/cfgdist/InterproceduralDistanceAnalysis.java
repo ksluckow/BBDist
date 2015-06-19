@@ -32,10 +32,15 @@ public class InterproceduralDistanceAnalysis {
   private final String entryClass;
   private AnalysisCache cache;
   
+  private final CallGraph cg;
+  
   public InterproceduralDistanceAnalysis(String classpath, String entryClass) {
     this.classpath = classpath;
     this.entryClass = entryClass;
     this.cache = new AnalysisCache();
+    
+    CGConstructor cgCon = new CHACGGenerator(this.classpath);
+    this.cg = cgCon.getCallGraphFromClass(this.entryClass);
   }
   
   public DistanceDB computeDistance(
@@ -50,10 +55,6 @@ public class InterproceduralDistanceAnalysis {
                              String targetMethod, 
                              int targetSrcLine,
                              boolean debug) {
-    
-    CGConstructor cgCon = new CHACGGenerator(this.classpath);
-    CallGraph cg = cgCon.getCallGraphFromClass(this.entryClass);
-    
     if(debug)
       printCG(cg);
 
@@ -118,7 +119,7 @@ public class InterproceduralDistanceAnalysis {
     }
     if(debug)
       printCFGsWithDistances(methods, bl2dist);
-    return new DistanceDB(this.cache, bl2dist);
+    return new DistanceDB(this.cache, bl2dist, cl, method, targetSrcLine);
   }
   
   private void printCG(CallGraph cg) {

@@ -2,6 +2,7 @@ package cfgdist;
 
 import java.util.Map;
 
+import polyglot.ast.Return;
 import soot.Scene;
 import soot.SootClass;
 import soot.SootMethod;
@@ -16,10 +17,17 @@ public class DistanceDB {
   //actual analysis result
   private final Map<Block, Integer> bl2dist;
   
-  public DistanceDB(AnalysisCache cache,
-      Map<Block, Integer> bl2dist) {
+  private final SootClass tgtCls;
+  private final SootMethod tgtMth;
+  private final int tgtSrcLine;
+  
+  public DistanceDB(AnalysisCache cache, Map<Block, Integer> bl2dist, 
+      SootClass tgtClass, SootMethod tgtMth, int tgtSrcLine) {
     this.cache = cache; 
     this.bl2dist = bl2dist;
+    this.tgtCls = tgtClass;
+    this.tgtMth = tgtMth;
+    this.tgtSrcLine = tgtSrcLine;
   }
   
   public int getDistance(String clazz, String method, int srcLine) {
@@ -37,5 +45,26 @@ public class DistanceDB {
     } catch (RuntimeException e) { //getMethodByName may throw a runtime exception if the class is a phantom
       return 0; //this happens for instance when dealing with jpf lib methods e.g. Verify.* -- these should not contribute to the distance!
     }
+  }
+
+  /** 
+   * @return target class for which this database was generated
+   */
+  public SootClass getTargetClass() {
+    return tgtCls;
+  }
+
+  /** 
+   * @return target method for which this database was generated
+   */
+  public SootMethod getTargetMethod() {
+    return tgtMth;
+  }
+
+  /** 
+   * @return target source line for which this database was generated
+   */
+  public int getTargetSrcLine() {
+    return tgtSrcLine;
   }
 }
