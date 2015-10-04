@@ -2,9 +2,8 @@
 Computes distance in terms of minimum number of branches to a target from an interprocedural analysis
 
 ## Installation ##
-`gradle build` builds the target
-
-`gradle fatJar` creates a jar with dependencies (soot)
+*`gradle build` builds the target
+*`gradle fatJar` creates a jar with dependencies (soot)
 
 ## usage ##
 Instantiate `InterproceduralDistanceAnalysis` and invoke `computeDistance`. This returns a `DistanceDB` object, that can be queried.
