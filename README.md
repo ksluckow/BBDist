@@ -1,3 +1,4 @@
+[ ![Codeship Status for luckow/CFGDistanceAnalysis](https://codeship.com/projects/2d8f16c0-4d1f-0133-8132-6e1cce453881/status?branch=master)](https://codeship.com/projects/106513)
 # Interprocedural Branch Distance Analysis #
 Computes distance in terms of minimum number of branches to a target from an interprocedural analysis
 
