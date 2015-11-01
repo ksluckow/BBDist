@@ -3,15 +3,18 @@
 Computes distance in terms of minimum number of branches to a target from an interprocedural analysis
 
 ## Installation ##
+The CFG distance analysis relies on soot. To obtain that dependency, please run `gradle prep` *before* compiling.
+
+Then
 *`gradle build` builds the target
 *`gradle fatJar` creates a jar with dependencies (soot)
 
-## usage ##
+## Usage ##
 Instantiate `InterproceduralDistanceAnalysis` and invoke `computeDistance`. This returns a `DistanceDB` object, that can be queried.
 
 See examples in `cfgdist.examples`
 
-## issues ##
+## Issues ##
 Does not support recursion yet..
 
 ## TODO ##
