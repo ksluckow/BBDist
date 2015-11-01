@@ -1,4 +1,3 @@
-[ ![Codeship Status for luckow/CFGDistanceAnalysis](https://codeship.com/projects/2d8f16c0-4d1f-0133-8132-6e1cce453881/status?branch=master)](https://codeship.com/projects/106513)
 # Interprocedural Branch Distance Analysis #
 Computes the shortest interprocedural distance between two basic blocks. The interprocedural CFG can be obtained using CHA or points-to analysis with Spark.
 
@@ -9,7 +8,7 @@ Then
 * `gradle build` builds the target
 * `gradle fatJar` creates a jar with dependencies (soot)
 
-## usage ##
+## Usage ##
 Instantiate `InterproceduralDistanceAnalysis` and invoke `computeDistance`. This returns a `DistanceDB` object, that can be queried.
 
 See examples in `cfgdist.examples`
