@@ -30,12 +30,16 @@ repositories {
 
 task prep << {
     println 'Preparing build'
-    def f = new File('./lib/' + sootJarName)
+    def libDir = new File(projectDir, 'lib')
+    if(!libDir.exists())
+        libDir.mkdirs()
+
+    def f = new File(libDir, sootJarName)
     if (!f.exists()) {
         def sootURL = 'https://ssebuild.cased.de/nightly/soot/lib/soot-trunk.jar'
         println 'Downloading ' + sootJarName
         new URL(sootURL).withInputStream{ i -> f.withOutputStream{ it << i }}
-        println 'Done downloading ' + sootJarName
+        println 'Done downloading soot to ' + f.getAbsolutePath()
     }
 }
 
