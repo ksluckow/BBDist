@@ -9,7 +9,7 @@ Then
 * `gradle build` builds the target
 * `gradle fatJar` creates a jar with dependencies (soot)
 
-## Usage ##
+## usage ##
 Instantiate `InterproceduralDistanceAnalysis` and invoke `computeDistance`. This returns a `DistanceDB` object, that can be queried.
 
 See examples in `cfgdist.examples`
